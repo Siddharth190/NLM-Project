@@ -18,12 +18,10 @@ import gradio as gr
 import warnings
 warnings.filterwarnings('ignore')
 
-# Set device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using device: {device}")
 
 class NewsDataset(Dataset):
-    """Custom Dataset class for news articles"""
     
     def __init__(self, texts, labels, tokenizer, max_length=512):
         self.texts = texts
@@ -273,7 +271,7 @@ class NewsClassifier:
         return self.id_to_label[predicted_class_id], confidence
 
 def create_gradio_interface(classifier):
-    """Create Gradio web interface"""
+   
     
     def predict_category(text, model_type):
         """Prediction function for Gradio"""
